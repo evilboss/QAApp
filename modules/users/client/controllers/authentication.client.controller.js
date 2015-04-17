@@ -28,6 +28,9 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 				$location.path('/');
 			}).error(function(response) {
 				$scope.error = response.message;
+                if(response.message ==='Invalid password'){
+                    $scope.error = 'Inbalid password';
+                }
 			});
 		};
 	}

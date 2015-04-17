@@ -1,0 +1,73 @@
+<section data-ng-controller="ApplicantsController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1 data-ng-bind="applicant.name"></h1>
+	</div>
+
+
+
+
+	<div class="pull-right" data-ng-show="authentication.user._id == applicant.user._id">
+
+
+
+        <div class="btn-group" dropdown>
+            <button type="button" class="btn btn-primary dropdown-toggle" toggleDropdown>
+                <span class="caret"></span>
+
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="/#!/applicants/{{applicant._id}}/edit">
+                    <i class="glyphicon glyphicon-edit"></i>&nbsp;Edit
+                </a></li>
+                <li><a data-ng-click="remove();">
+                    <i class="glyphicon glyphicon-trash"></i>&nbsp;Delete
+                </a>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+
+
+	</div>
+
+    <div class="row">
+        <dl class="dl-horizontal">
+        <dt>Applicant Name</dt>
+        <dd>{{applicant.firstName + '&nbsp;' + applicant.lastName}}</dd>
+        </dl>
+        <div class="col-md-6">
+            <dl class="dl-horizontal">
+                <dt>Email</dt>
+                <dd>{{applicant.email}}</dd>
+                <dt>Sex</dt>
+                <dd>{{applicant.gender}}</dd>
+                <dt>Mobile</dt>
+                <dd>{{applicant.mobile}}</dd>
+                <dt>Landline</dt>
+                <dd>{{applicant.landLine}}</dd>
+            </dl>
+        </div>
+        <div class="col-md-6"><dl class="dl-horizontal">
+            <dt>Suburb</dt>
+            <dd>{{applicant.suburb}}</dd>
+            <dt>Company</dt>
+            <dd>{{applicant.company}}</dd>
+            <dt>Position</dt>
+            <dd>{{applicant.position}}</dd>
+        </dl></div>
+    </div>
+
+
+
+    <small>
+        <em class="text-muted">
+            Posted on
+            <span data-ng-bind="applicant.created | date:'mediumDate'"></span>
+            by
+            <span data-ng-bind="applicant.user.displayName"></span>
+        </em>
+    </small>
+</section>
